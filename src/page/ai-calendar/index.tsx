@@ -7,6 +7,7 @@ import { fetchAiResponse } from "@/ai/AiResponse";
 import { toast } from "sonner";
 import { AiMessage } from "@/ai/AiMesseage";
 import { useAuthStore } from "@/storage/User";
+import ItineraryMapSkeleton from "@/components/common/ItineraryMapSkeleton";
 
 function AiCalendar() {
   //useChatStore의 메서드를 가져옴
@@ -188,6 +189,15 @@ function AiCalendar() {
           </form>
         </div>
       </section>
+
+      {chatId && (
+        <section className="hidden md:flex flex-1 flex-col h-full min-w-0 pb-4 animate-in slide-in-from-right-8 fade-in duration-500">
+          <div className="flex-1 rounded-xl overflow-hidden shadow-sm border bg-card w-full h-full">
+            {/* 이전에 만든 지도를 여기에 쏙 넣습니다 */}
+            <ItineraryMapSkeleton />
+          </div>
+        </section>
+      )}
     </main>
   );
 }
